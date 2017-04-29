@@ -39,8 +39,8 @@ config-HT-${auth}: unconfig-HT
 stamp-${auth}-config:
 	${.MAKE} -C ${.CURDIR} config-AP-${auth}
 	${.MAKE} -C ${.CURDIR} config-HT-${auth}
-	until ifconfig ${AP_IF} | grep -q 'status: active'; do sleep 0.1; done
-	until ifconfig ${HT_IF} | grep -q 'status: active'; do sleep 0.1; done
+	until ifconfig ${AP_IF} | grep -q 'status: active'; do sleep 1; done
+	until ifconfig ${HT_IF} | grep -q 'status: active'; do sleep 1; done
 	touch $@
 
 .for node src_rd dst_rd in AP ${HT_RD} ${AP_RD} HT ${AP_RD} ${HT_RD}
