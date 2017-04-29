@@ -14,7 +14,7 @@ HT_IP ?=	10.190.0.2
 AP_RD ?=	1
 HT_RD ?=	2
 AP_NWID ?=	regress
-AP_BSSID !=	ifconfig rum0 | sed -ne 's/.*lladdr \(..:..:..:..:..:..\)$$/\1/p'
+AP_BSSID !=	ifconfig ${AP_IF} | sed -ne 's/.*lladdr \(..:..:..:..:..:..\)$$/\1/p'
 
 #d8:5d:4c:8f:7e:19
 
@@ -66,7 +66,6 @@ REGRESS_TARGETS += 80211-${auth}-cleanup
 	${.MAKE} -C ${.CURDIR} unconfig-AP
 	${.MAKE} -C ${.CURDIR} unconfig-HT
 	rm -f stamp-${auth}-config
-
 .endfor
 
 .include <bsd.regress.mk>
